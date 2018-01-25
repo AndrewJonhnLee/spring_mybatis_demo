@@ -1,12 +1,10 @@
 package com.cool.amoy.jpa;
 
 import com.cool.amoy.model.Entity.HelloModel;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface HelloRepository extends PagingAndSortingRepository<HelloModel, Long> {
+public interface HelloRepository extends CrudRepository<HelloModel, Long>{
 
-    Page<HelloModel> findAll(Pageable pageable);
-    HelloModel findById(int id);
+    @Override
+    HelloModel findOne(Long aLong);
 }

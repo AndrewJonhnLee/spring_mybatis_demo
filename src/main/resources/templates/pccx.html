@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>二级代理管理</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/nprogress.css" rel="stylesheet">
+    <link href="css/green.css" rel="stylesheet">
+    <link href="css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="css/jqvmap.min.css" rel="stylesheet"/>
+    <link href="css/daterangepicker.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="css/iconfont2.css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="js/alertPopShow.js"></script>
+    <style >
+        .alert-warning {
+        	background-color: #f3731c;
+            border-color: #eb701d;
+        }
+    </style>
+    <script>
+function windowHeight() {
+    var de = document.documentElement;
+    return self.innerHeight||(de && de.clientHeight)||document.body.clientHeight;
+}
+window.onload=window.onresize=function(){
+    var wh=windowHeight();
+    //document.getElementById("xt-left").style.height = document.getElementById("xt-right").style.height = (wh-document.getElementById("xt-top").offsetHeight)+"px";
+}
+</script>
+</head>
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title">
+                        <img src="images/logo.png" alt="" title="">
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="profile clearfix">
+                        <div class="profile_pic">
+                            <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>尊敬的商户,</span>
+                            <h2>zhangs68</h2>
+                        </div>
+                    </div>
+                    <br/>
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3><a href="index.html">代理管理系统中心</a></h3>
+                            <ul class="nav side-menu">
+                                <li>
+                                    <a>
+                                        <i class="fa fa-home"></i> 商户管理 <span class="fa fa-chevron-down"></span>
+                                    </a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <a href="ejdlgl.html">二级代理管理</a>
+                                        </li>
+                                        <li>
+                                            <a href="shgl.html">商户管理</a>
+                                        </li>
+                                         <li>
+                                            <a href="shsh.html">商户审核</a>
+                                        </li>
+                                        <li>
+                                            <a href="tscx.html">投诉查询</a>
+                                        </li>
+                                        <li>
+                                            <a href="djjl.html">登录记录</a>
+                                        </li>
+                                        <li>
+                                            <a href="mjjsjg.html">密价寄售价格</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                     
+                                <li>
+                                    <a>
+                                        <i class="fa fa-desktop"></i> 订单管理 <span class="fa fa-chevron-down"></span>
+                                    </a>
+                                    <ul class="nav child_menu">        
+                                        <li>
+                                            <a href="pccx.html">批次查询</a>
+                                        </li>
+                                        <li>
+                                            <a href="jsjl.html">寄售记录</a>
+                                        </li>
+                                        
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i class="fa fa-money"></i> 财务管理 <span class="fa fa-chevron-down"></span>
+                                    </a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <a href="txmx.html">提现明细</a>
+                                        </li>
+                                        <li>
+                                            <a href="shzjmx.html">商户资金明细</a>
+                                        </li>
+                                        <li>
+                                            <a href="jslrmx.html">寄售利润明细</a>
+                                        </li>
+                                      
+                                    </ul>
+                                </li>
+                                 <li>
+                                    <a>
+                                       <i class=" fa iconfont">&#xe637;</i> 统计报表 <span class="fa fa-chevron-down"></span>
+                                    </a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <a href="rxsfxbb.html">日销售分析报表</a>
+                                        </li>
+                                        <li>
+                                            <a href="spxsbb.html">商品销售报表</a>
+                                        </li>
+                                        <li>
+                                            <a href="shjsbb.html">商户寄售报表</a>
+                                        </li>
+                                      
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i class="fa fa-table"></i> 代理内部员工管理 <span class="fa fa-chevron-down"></span>
+                                    </a>
+                                    <ul class="nav child_menu">    
+                                        <li>
+                                            <a href="gygl.html">员工管理</a>
+                                        </li>
+                                        <li>
+                                            <a href="qxsz.html">权限设置</a>
+                                        </li>
+                                        <li>
+                                            <a href="zyczrz.html">重要操作日志</a>
+                                        </li>
+                                       
+                                    </ul>
+                                </li>
+                                 <li>
+                                    <a>
+                                        <i class=" fa iconfont">&#xe62c;</i> 代理设置 <span class="fa fa-chevron-down"></span>
+                                    </a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <a href="wzsz.html">网站设置</a>
+                                        </li>
+                                        <li>
+                                            <a href="kfsz.html">客服设置</a>
+                                        </li>
+                                        <li>
+                                            <a href="ipsz.html">IP白名单设置</a>
+                                        </li>
+                                        <li>
+                                            <a href="wzgs.html">网站公告</a>
+                                        </li>
+                                      
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 头部导航栏 -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="images/img.jpg" alt="">zhangs68<span class=" fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li>
+                                        <a href="userinfo.html">账户资料</a>
+                                    </li>
+                                     
+                                     <li>
+                                        <a href="#"><i class="fa fa-sign-out pull-right"></i>退出登录</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                               <li title="未读信息">
+                                <a href="/message">
+                                    <span class="" title="未读信息"><i class="iconfont">&#xe633;</i></span>
+                                    <span id="message" class="label label-success">0</span>
+                                </a>
+                            </li>
+                               <li title="未处理投诉">
+                                <a href="/message">
+                                    <span class="" title="未处理投诉"><i class="iconfont">&#xe625;</i></span>
+                                    <span id="message" class="label label-success">0</span>
+                                </a>
+                            </li>
+                               <li title="失败订单数">
+                                <a href="/message">
+                                    <span class="" title="失败订单数"><i class="iconfont">&#xe627;</i></span>
+                                    <span id="message" class="label label-success">0</span>
+                                </a>
+                            </li>
+                               <li title="处理中订单数">
+                                <a href="/message">
+                                    <span class="" title="处理中订单数"><i class="iconfont">&#xe607;</i></span>
+                                    <span id="message" class="label label-success">0</span>
+                                </a>
+                            </li>
+                               <li title="商户待审核数">
+                                <a href="/message">
+                                    <span class="" title="商户待审核数"><i class="iconfont">&#xe6ee;</i></span>
+                                    <span id="message" class="label label-success">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- /头部导航栏结束 -->
+             <div class="right_col" role="main" style="padding-bottom: 10px;">
+               
+  <div class="xt-bt"><a href="index.html">代理系统管理中心</a> > 订单管理 > <a href="pccx.html">批次查询</a></div>
+    <div class="xt-input">
+        <div style="float: left;"><span>关键字</span>
+       <input type="text" class="int-text" style="height: 24px; width: 100px;" />
+        <span>批次号</span><input type="text" class="int-text" style="height: 24px; width: 100px;"  />
+        <span>订单状态</span>
+      <select class="int-text" style="height: 24px; width: 100px; padding:0px;"  >
+        <option>选项一</option>
+        <option>选项二</option>
+        <option>选项三</option>
+        <option>选项四</option>
+        <option>选项五</option>
+    </select>
+        <span>下单类型</span>
+          <select class="int-text" style="height: 24px; width: 100px; padding:0px;"  >
+        <option>选项一</option>
+        <option>选项二</option>
+        <option>选项三</option>
+        <option>选项四</option>
+        <option>选项五</option>
+    </select></div>
+    <div style="float: left; margin-top:2px;"><span>下单时间</span></div>
+   <div id="wrapper" style=" float: left; width:180px; padding-top: 0px; ">   
+  <form>
+    <select class='custom-date' name='select' style="width: 150px;">
+      <option value='7'>7 Days</option>
+      <option value='30'>30 Days</option>
+      <option selected='selected' value='90'>90 Days</option>
+      <option value='180'>180 Days</option>
+      <option value='365'>365 Days</option>
+      <option value='custom'>Custom</option>
+    </select>
+  </form>
+</div>
+<script src='js/jquery.js'></script>
+
+  <script src="js/index.js"></script>
+        <input type="button" value="确 定" class="green-int" onclick="testAjax();"/>
+        <input type="button" value="取 消" class="yellow-int" />
+    </div>
+    <div class="xt-table">
+        <table cellpadding="0" cellspacing="0" border="0" bgcolor="#dcdcdc" width="100%">
+            <tr>
+	            <th style="text-align: center;">订单号</th>
+	            <th style="text-align: center;">下单时间</th>
+	            <th style="text-align: center;">用户名</th>
+	            <th style="text-align: center;">充值卡类型</th>
+	            <th style="text-align: center;">充值卡卡号</th>
+	            <th style="text-align: center;">卡面值</th>
+	            <th style="text-align: center;">批次号</th>
+	            <th style="text-align: center;">订单状态</th>
+	            <th style="text-align: center;">处理完成时间</th>
+	            <th style="text-align: center;">处理时间</th>
+	            <th style="text-align: center;">实际金额</th>
+	            <th style="text-align: center;">加款金额</th>
+	            <th style="text-align: center;">通道</th>
+	            <th style="text-align: center;">返回信息</th>
+	            <th style="text-align: center;">操作</th>
+            </tr>
+            <tr>
+                <td>201800001</td>
+                <td>2018-11-11 12:10:00</td>
+                <td>user123</td>
+                <td>游戏</td>
+                <td>02114521</td>
+                <td>100</td>
+                <td>0002</td>
+                <td>已完成</td>
+                <td>2018-11-11 12:12:00</td>
+                <td>2018-11-11 12:11:00</td>
+                <td>100</td>
+                <td>0</td>
+                <td>通道1</td>
+                <td>无</td>
+                <td><a href="#" class="blue-xt"><div  class="demo3">删除</div></a></td>
+            </tr>
+            <tr class="xt-bg">
+               <td>201800001</td>
+                <td>2018-11-11 12:10:00</td>
+                <td>user123</td>
+                <td>游戏</td>
+                <td>02114521</td>
+                <td>100</td>
+                <td>0002</td>
+                <td>已完成</td>
+                <td>2018-11-11 12:12:00</td>
+                <td>2018-11-11 12:11:00</td>
+                <td>100</td>
+                <td>0</td>
+                <td>通道1</td>
+                <td>无</td>
+                <td><a href="#" class="blue-xt"><div  class="demo3">删除</div></a></td>
+            </tr>
+            <tr>
+                 <td>201800001</td>
+                <td>2018-11-11 12:10:00</td>
+                <td>user123</td>
+                <td>游戏</td>
+                <td>02114521</td>
+                <td>100</td>
+                <td>0002</td>
+                <td>已完成</td>
+                <td>2018-11-11 12:12:00</td>
+                <td>2018-11-11 12:11:00</td>
+                <td>100</td>
+                <td>0</td>
+                <td>通道1</td>
+                <td>无</td>
+                <td><a href="#" class="blue-xt"><div  class="demo3">删除</div></a></td>
+            </tr>
+            <tr class="xt-bg">
+                <td>201800001</td>
+                <td>2018-11-11 12:10:00</td>
+                <td>user123</td>
+                <td>游戏</td>
+                <td>02114521</td>
+                <td>100</td>
+                <td>0002</td>
+                <td>已完成</td>
+                <td>2018-11-11 12:12:00</td>
+                <td>2018-11-11 12:11:00</td>
+                <td>100</td>
+                <td>0</td>
+                <td>通道1</td>
+                <td>无</td>
+                <td><a href="#" class="blue-xt"><div  class="demo3">删除</div></a></td>
+            </tr>
+            <tr>
+                <td>201800001</td>
+                <td>2018-11-11 12:10:00</td>
+                <td>user123</td>
+                <td>游戏</td>
+                <td>02114521</td>
+                <td>100</td>
+                <td>0002</td>
+                <td>已完成</td>
+                <td>2018-11-11 12:12:00</td>
+                <td>2018-11-11 12:11:00</td>
+                <td>100</td>
+                <td>0</td>
+                <td>通道1</td>
+                <td>无</td>
+                <td><a href="#" class="blue-xt"><div  class="demo3">删除</div></a></td>
+            </tr>
+            <tr class="xt-bg">
+                <td>201800001</td>
+                <td>2018-11-11 12:10:00</td>
+                <td>user123</td>
+                <td>游戏</td>
+                <td>02114521</td>
+                <td>100</td>
+                <td>0002</td>
+                <td>已完成</td>
+                <td>2018-11-11 12:12:00</td>
+                <td>2018-11-11 12:11:00</td>
+                <td>100</td>
+                <td>0</td>
+                <td>通道1</td>
+                <td>无</td>
+                <td><a href="#" class="blue-xt"><div  class="demo3">删除</div></a></td>
+            </tr>
+            <tr>
+               <td>201800001</td>
+                <td>2018-11-11 12:10:00</td>
+                <td>user123</td>
+                <td>游戏</td>
+                <td>02114521</td>
+                <td>100</td>
+                <td>0002</td>
+                <td>已完成</td>
+                <td>2018-11-11 12:12:00</td>
+                <td>2018-11-11 12:11:00</td>
+                <td>100</td>
+                <td>0</td>
+                <td>通道1</td>
+                <td>无</td>
+                <td><a href="#" class="blue-xt"><div  class="demo3">删除</div></a></td>
+            </tr>
+            <tr class="xt-bg">
+                <td>201800001</td>
+                <td>2018-11-11 12:10:00</td>
+                <td>user123</td>
+                <td>游戏</td>
+                <td>02114521</td>
+                <td>100</td>
+                <td>0002</td>
+                <td>已完成</td>
+                <td>2018-11-11 12:12:00</td>
+                <td>2018-11-11 12:11:00</td>
+                <td>100</td>
+                <td>0</td>
+                <td>通道1</td>
+                <td>无</td>
+                <td><a href="#" class="blue-xt"><div  class="demo3">删除</div></a></td>
+            </tr>
+            <tr>
+                <td>201800001</td>
+                <td>2018-11-11 12:10:00</td>
+                <td>user123</td>
+                <td>游戏</td>
+                <td>02114521</td>
+                <td>100</td>
+                <td>0002</td>
+                <td>已完成</td>
+                <td>2018-11-11 12:12:00</td>
+                <td>2018-11-11 12:11:00</td>
+                <td>100</td>
+                <td>0</td>
+                <td>通道1</td>
+                <td>无</td>
+                <td><a href="#" class="blue-xt"><div  class="demo3">删除</div></a></td>
+            </tr>
+            <tr class="xt-bg">
+                <td>201800001</td>
+                <td>2018-11-11 12:10:00</td>
+                <td>user123</td>
+                <td>游戏</td>
+                <td>02114521</td>
+                <td>100</td>
+                <td>0002</td>
+                <td>已完成</td>
+                <td>2018-11-11 12:12:00</td>
+                <td>2018-11-11 12:11:00</td>
+                <td>100</td>
+                <td>0</td>
+                <td>通道1</td>
+                <td>无</td>
+                <td><a href="#" class="blue-xt"><div  class="demo3">删除</div></a></td>
+            </tr>
+            <tr>
+               <td>201800001</td>
+                <td>2018-11-11 12:10:00</td>
+                <td>user123</td>
+                <td>游戏</td>
+                <td>02114521</td>
+                <td>100</td>
+                <td>0002</td>
+                <td>已完成</td>
+                <td>2018-11-11 12:12:00</td>
+                <td>2018-11-11 12:11:00</td>
+                <td>100</td>
+                <td>0</td>
+                <td>通道1</td>
+                <td>无</td>
+                <td><a href="#" class="blue-xt">删除</a></td>
+            </tr>
+            <tr class="xt-bg">
+                 <td>201800001</td>
+                <td>2018-11-11 12:10:00</td>
+                <td>user123</td>
+                <td>游戏</td>
+                <td>02114521</td>
+                <td>100</td>
+                <td>0002</td>
+                <td>已完成</td>
+                <td>2018-11-11 12:12:00</td>
+                <td>2018-11-11 12:11:00</td>
+                <td>100</td>
+                <td>0</td>
+                <td>通道1</td>
+                <td>无</td>
+                <td><a href="#" class="blue-xt">删除</a></td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="xt-fenye">
+        <div class="xt-fenye-left">当前第 1 / 270 页,每页10条，共 2696条记录</div>
+        <div class="xt-fenye-right">
+            <a href="#">首页</a>
+            <a href="#">上一步</a>
+            <a href="#">下一步</a>
+            <a href="#">尾页</a>
+            <input type="text" name="text" />
+            <a href="#" class="xt-link">跳转</a>
+        </div>
+            </div>
+
+        </div>
+                    <footer>
+                <div class="pull-right">
+                    <p>ICP证：闽ICP备16018777号 </p>
+                    <p>Copyright © 2017-2020 ®www.95xk.com All right reserved</p>
+                </div>
+                <div class="clearfix"></div> 
+            </footer>
+        <div class="modal" id="waModal" role="dialog" aria-labelledby="waModalLable">   
+            <div class="modal-dialog">      
+                <div class="modal-content">         
+                    <div class="modal-header">              
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span> 
+                        </button>               
+                        <h4 class="modal-title">Modal title</h4>
+                    </div>          
+                    <div class="modal-body"></div>      
+                </div>  
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/fastclick.js"></script>
+    <script src="js/nprogress.js"></script>
+    <script src="js/Chart.min.js"></script>
+    <script src="js/gauge.min.js"></script>
+    <script src="js/bootstrap-progressbar.min.js"></script>
+    <script src="js/icheck.min.js"></script>
+    <script src="js/skycons.js"></script>
+    <script src="js/jquery.flot.js"></script>
+    <script src="js/jquery.flot.pie.js"></script>
+    <script src="js/jquery.flot.time.js"></script>
+    <script src="js/jquery.flot.stack.js"></script>
+    <script src="js/jquery.flot.resize.js"></script>
+    <script src="js/jquery.flot.orderBars.js"></script>
+    <script src="js/jquery.flot.spline.min.js"></script>
+    <script src="js/curvedLines.js"></script>
+    <script src="js/date.js"></script>
+    <script src="js/jquery.vmap.js"></script>
+    <script src="js/jquery.vmap.world.js"></script>
+    <script src="js/jquery.vmap.sampledata.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/daterangepicker.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/jquery.zclip.min.js" type="text/javascript"></script>
+    <script src="js/app.js" type="text/javascript"></script>
+    <script src="js/common.js"></script> 
+    <script>
+        $(function(){
+            pccx();
+        })
+        
+        
+        function testAjax(){
+        	 var temp ="12121"; 
+           	/* $.post('http://192.168.1.200:8081/xkSaleorder/list', 
+               	{beginTradedates:'2018-01-01 00:00:00', endTradedates:'2018-01-31 00:00:00', keywords:'用户ID', condition:'10007' }, 
+               	function(data) {
+               		data = JSON.parse(data);
+               		alert(data);
+               		alert(data.page);
+               		alert(data.saleorder);
+                });  */
+	           
+	           /* 
+                 $.ajax({  
+                     async:false, 
+                     type : "POST",  
+                     url: "http://192.168.1.200:8081/xkSaleorder/list?beginTradedates=2018-01-01 00:00:00&endTradedates=2018-01-31 00:00:00&keywords=用户ID&condition=10007",  
+                     dataType : "jsonp",//数据类型为jsonp    
+                     jsonp: "jsonpCallback",//服务端用于接收callback调用的function名的参数    
+                     success : function(data){  
+                         //回调函数  
+                    	 temp = data;
+                     },  
+                     error:function(){  
+                    	 alert("error");
+                     }  
+                 });  
+                */
+                
+                var token = 'token';
+                $.ajax({
+	               	headers: {'Authorization': 'Bearer '+token+' token'},
+	                async: false, 
+	                type : "POST", 
+	                url : "http://127.0.0.1:8090/test",
+	                dataType : 'json', 
+	                success : function(data){ 
+                 	alert("test=="+data.name);
+                		temp = data; 
+                	},  
+                    error:function(data){  
+                  	 alert("data=="+data);
+                   }  
+                });
+                
+        }
+    </script>
+</body>
+</html> 
+ 

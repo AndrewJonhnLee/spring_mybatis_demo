@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>二级代理管理</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/nprogress.css" rel="stylesheet">
+    <link href="css/green.css" rel="stylesheet">
+    <link href="css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="css/jqvmap.min.css" rel="stylesheet"/>
+    <link href="css/daterangepicker.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="css/iconfont2.css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+     <link rel="stylesheet" href="css/bootstrapStyle/bootstrapStyle.css" type="text/css">
+    
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.ztree.core.js"></script>
+    <script type="text/javascript" src="js/jquery.ztree.excheck.js"></script>
+    <script type="text/javascript" src="js/jquery.ztree.exedit.js"></script>
+    <SCRIPT type="text/javascript">
+        <!--
+        var setting = {
+            view: {
+                addHoverDom: addHoverDom,
+                removeHoverDom: removeHoverDom,
+                selectedMulti: false
+            },
+            check: {
+                enable: true
+            },
+            data: {
+                simpleData: {
+                    enable: true
+                }
+            },
+            edit: {
+                enable: true
+            }
+        };
+
+        var zNodes =[
+            {id:1, pId:0, name:"功能菜单", open:true},
+            {id:2, pId:0, name:"查看", open:true},
+            {id:3, pId:0, name:"编辑", open:true},
+            {id:4, pId:0, name:"行政区域", open:true},
+        {id:101, pId:1, name:"商户管理"},
+        {id:201, pId:101, name:"二级代理管理"},
+        {id:202, pId:101, name:"商户管理"},
+        {id:203, pId:101, name:"商户审核"},
+        {id:204, pId:101, name:"投诉查询"},
+        {id:205, pId:101, name:"登录记录"},
+        
+        {id:102, pId:1, name:"商品管理"},
+        {id:301, pId:102, name:"商品管理"},
+        {id:302, pId:102, name:"寄售价格设置"},
+        {id:303, pId:102, name:"二级代理价格设置"},
+        {id:304, pId:102, name:"商品类型设置"},
+        
+        
+        {id:103, pId:1, name:"订单管理"},
+        {id:401, pId:103, name:"批次查询"},
+        {id:402, pId:103, name:"寄售记录"},
+
+        {id:104, pId:1, name:"财务管理"},
+        {id:401, pId:104, name:"提现明细"},
+        {id:402, pId:104, name:"商户资金明细"},
+        {id:403, pId:104, name:"寄售利润明细"},
+
+        {id:108, pId:1, name:"统计报表"},
+        {id:501, pId:108, name:"日销售分析报表"},
+        {id:502, pId:108, name:"商品销售报表"},
+        {id:503, pId:108, name:"商户寄售报表"},
+
+
+        {id:109, pId:1, name:"代理内部员工管理"},
+        {id:601, pId:109, name:"员工管理"},
+        {id:602, pId:109, name:"权限设置"},
+        {id:603, pId:109, name:"重要操作日志"},
+
+        {id:110, pId:1, name:"代理设置"},
+        {id:701, pId:110, name:"网站设置"},
+        {id:702, pId:110, name:"客服设置"},
+        {id:703, pId:110, name:"IP白名单设置"},
+        {id:704, pId:110, name:"网站公告"},
+
+       
+        ];
+
+        $(document).ready(function(){
+            $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+        });
+
+        var newCount = 1;
+        function addHoverDom(treeId, treeNode) {
+            var sObj = $("#" + treeNode.tId + "_span");
+            if (treeNode.editNameFlag || $("#addBtn_"+treeNode.tId).length>0) return;
+            var addStr = "<span class='button add' id='addBtn_" + treeNode.tId
+                + "' title='add node' onfocus='this.blur();'></span>";
+            sObj.after(addStr);
+            var btn = $("#addBtn_"+treeNode.tId);
+            if (btn) btn.bind("click", function(){
+                var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+                zTree.addNodes(treeNode, {id:(100 + newCount), pId:treeNode.id, name:"new node" + (newCount++)});
+                return false;
+            });
+        };
+        function removeHoverDom(treeId, treeNode) {
+            $("#addBtn_"+treeNode.tId).unbind().remove();
+        };
+        //-->
+    </SCRIPT>
+    
+    <style >
+        .alert-warning {
+        	background-color: #f3731c;
+            border-color: #eb701d;
+        }
+                    .demo--label{margin:8px 20px 0 0;display:inline-block}
+            .demo--radio{display:none}
+            .demo--radioInput{background-color:#fff;border:1px solid rgba(0,0,0,0.15);border-radius:100%;display:inline-block;height:16px;margin-right:10px;margin-top:-1px;vertical-align:middle;width:16px;line-height:1}
+            .demo--radio:checked + .demo--radioInput:after{background-color:#f3731c;border-radius:100%;content:"";display:inline-block;height:12px;margin:1px;width:12px}
+            .demo--checkbox.demo--radioInput,.demo--radio:checked + .demo--checkbox.demo--radioInput:after{border-radius:0}
+
+
+            
+                </style>
+
+    <script>
+function windowHeight() {
+    var de = document.documentElement;
+    return self.innerHeight||(de && de.clientHeight)||document.body.clientHeight;
+}
+window.onload=window.onresize=function(){
+    var wh=windowHeight();
+    document.getElementById("xt-left").style.height = document.getElementById("xt-right").style.height = (wh-document.getElementById("xt-top").offsetHeight)+"px";
+}
+</script>
+</head>
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title">
+                        <img src="images/logo.png" alt="" title="">
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="profile clearfix">
+                        <div class="profile_pic">
+                            <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>尊敬的商户,</span>
+                            <h2>zhangs68</h2>
+                        </div>
+                    </div>
+                    <br/>
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3><a href="index.html">代理管理系统中心</a></h3>
+                            <ul class="nav side-menu">
+                                <li>
+                                    <a>
+                                        <i class="fa fa-home"></i> 商户管理 <span class="fa fa-chevron-down"></span>
+                                    </a>
+                                    <ul class="nav child_menu">
+                                        <li class="active">
+                                            <a href="ejdlgl.html">二级代理管理</a>
+                                        </li>
+                                        <li>
+                                            <a href="shgl.html">商户管理</a>
+                                        </li>
+                                         <li>
+                                            <a href="shsh.html">商户审核</a>
+                                        </li>
+                                        <li>
+                                            <a href="tscx.html">投诉查询</a>
+                                        </li>
+                                        <li>
+                                            <a href="djjl.html">登录记录</a>
+                                        </li>
+                                        <li>
+                                            <a href="mjjsjg.html">密价寄售价格</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                     
+                                <li>
+                                    <a>
+                                        <i class="fa fa-desktop"></i> 订单管理 <span class="fa fa-chevron-down"></span>
+                                    </a>
+                                    <ul class="nav child_menu">        
+                                        <li>
+                                            <a href="pccx.html">批次查询</a>
+                                        </li>
+                                        <li>
+                                            <a href="jsjl.html">寄售记录</a>
+                                        </li>
+                                        
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i class="fa fa-money"></i> 财务管理 <span class="fa fa-chevron-down"></span>
+                                    </a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <a href="txmx.html">提现明细</a>
+                                        </li>
+                                        <li>
+                                            <a href="shzjmx.html">商户资金明细</a>
+                                        </li>
+                                        <li>
+                                            <a href="jslrmx.html">寄售利润明细</a>
+                                        </li>
+                                      
+                                    </ul>
+                                </li>
+                                 <li>
+                                    <a>
+                                       <i class=" fa iconfont">&#xe637;</i> 统计报表 <span class="fa fa-chevron-down"></span>
+                                    </a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <a href="rxsfxbb.html">日销售分析报表</a>
+                                        </li>
+                                        <li>
+                                            <a href="spxsbb.html">商品销售报表</a>
+                                        </li>
+                                        <li>
+                                            <a href="shjsbb.html">商户寄售报表</a>
+                                        </li>
+                                      
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i class="fa fa-table"></i> 代理内部员工管理 <span class="fa fa-chevron-down"></span>
+                                    </a>
+                                    <ul class="nav child_menu">    
+                                        <li>
+                                            <a href="gygl.html">员工管理</a>
+                                        </li>
+                                        <li>
+                                            <a href="qxsz.html">权限设置</a>
+                                        </li>
+                                        <li>
+                                            <a href="zyczrz.html">重要操作日志</a>
+                                        </li>
+                                       
+                                    </ul>
+                                </li>
+                                 <li>
+                                    <a>
+                                        <i class=" fa iconfont">&#xe62c;</i> 代理设置 <span class="fa fa-chevron-down"></span>
+                                    </a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <a href="wzsz.html">网站设置</a>
+                                        </li>
+                                        <li>
+                                            <a href="kfsz.html">客服设置</a>
+                                        </li>
+                                        <li>
+                                            <a href="ipsz.html">IP白名单设置</a>
+                                        </li>
+                                        <li>
+                                            <a href="wzgs.html">网站公告</a>
+                                        </li>
+                                      
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 头部导航栏 -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="images/img.jpg" alt="">zhangs68<span class=" fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li>
+                                        <a href="userinfo.html">账户资料</a>
+                                    </li>
+                                     
+                                     <li>
+                                        <a href="#"><i class="fa fa-sign-out pull-right"></i>退出登录</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                               <li title="未读信息">
+                                <a href="/message">
+                                    <span class="" title="未读信息"><i class="iconfont">&#xe633;</i></span>
+                                    <span id="message" class="label label-success">0</span>
+                                </a>
+                            </li>
+                               <li title="未处理投诉">
+                                <a href="/message">
+                                    <span class="" title="未处理投诉"><i class="iconfont">&#xe625;</i></span>
+                                    <span id="message" class="label label-success">0</span>
+                                </a>
+                            </li>
+                               <li title="失败订单数">
+                                <a href="/message">
+                                    <span class="" title="失败订单数"><i class="iconfont">&#xe627;</i></span>
+                                    <span id="message" class="label label-success">0</span>
+                                </a>
+                            </li>
+                               <li title="处理中订单数">
+                                <a href="/message">
+                                    <span class="" title="处理中订单数"><i class="iconfont">&#xe607;</i></span>
+                                    <span id="message" class="label label-success">0</span>
+                                </a>
+                            </li>
+                               <li title="商户待审核数">
+                                <a href="/message">
+                                    <span class="" title="商户待审核数"><i class="iconfont">&#xe6ee;</i></span>
+                                    <span id="message" class="label label-success">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- /头部导航栏结束 -->
+            <div class="right_col" role="main">
+                 <div class="xt-bt"><a href="index.html">代理系统管理中心</a> > 代理员工内部设置 > <a href="tjqx.html">添加角色权限</a></div>
+                <div class="panel-body">
+                    <form name="edit" class="form-horizontal" method="post" onsubmit="return checkForm()" action="/account/editsave">
+                        <ul class="nav nav-tabs">
+                            <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                            <li role="presentation" class="active"><a href="javascript:;">添加角色权限</a></li>
+                        </ul>
+                        <br>
+                        <div class="form-group">
+                            <label for="userid" class="col-sm-2 control-label">归属机构</label>
+                            <div class="col-sm-5">
+                                <select class="form-control input-sm"   >
+                            <option>人力部</option>
+                            <option>技术部</option>
+                            <option>行政部</option>
+                            </select>
+                            </div>
+                        </div>
+                      
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">角色名称</label>
+                            <div class="col-sm-5">
+                            <input type="text" id="name" class="form-control input-sm" value="" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">英文名称</label>
+                            <div class="col-sm-5">
+                             <input type="text" id="name" class="form-control input-sm" value="" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">角色类型</label>
+                            <div class="col-sm-5">
+                                 <select class="form-control input-sm"   >
+                            <option>管理角色</option>
+                            <option>分配任务</option>
+                            <option>普通角色</option>
+                            </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">是否系统数据</label>
+                            <div class="col-sm-5">
+                                <label class="demo--label">
+                                <input class="demo--radio" type="radio" name="demo-radio">
+                                <span class="demo--radioInput"></span>是
+                                </label>
+                                <label class="demo--label">
+                                <input class="demo--radio" type="radio" name="demo-radio">
+                                <span class="demo--radioInput"></span>否
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">是否可用</label>
+                            <div class="col-sm-5">
+                               <label class="demo--label">
+                                <input class="demo--radio" type="radio" name="demo-radio">
+                                <span class="demo--radioInput"></span>是
+                                </label>
+                                <label class="demo--label">
+                                <input class="demo--radio" type="radio" name="demo-radio">
+                                <span class="demo--radioInput"></span>否
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">数据范围</label>
+                            <div class="col-sm-5">
+                                 <select class="form-control input-sm"   >
+                            <option>所有数据</option>
+                            <option>所在公司数据</option>
+                            <option>本人数据</option>
+                            </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">角色授权</label>
+                            <div class="col-sm-5">
+                              <ul id="treeDemo" class="ztree"></ul>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">备注</label>
+                            <div class="col-sm-5">
+                             <textarea rows="8" cols="40" class="form-control input-sm"></textarea>
+                                
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        <!-- <div class="form-group">
+                            <label for="siteurl" class="col-sm-2 control-label">个性签名</label>
+                            <div class="col-sm-5">
+                                <textarea name="gonggao" class="form-control input-sm" rows="3"></textarea>
+                            </div>
+                        </div> -->
+                        <br>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"></label>
+                            <div class="col-sm-5">
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    <span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;确 定
+                                </button>
+                                <span class="glyphicon glyphicon-floppy-disk">当数据保存后，如果要修改信息，请联系管理员</span>
+                            </div>
+                        </div>
+                        <br>
+                    </form>
+                </div>
+            </div>
+    
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/fastclick.js"></script>
+    <script src="js/nprogress.js"></script>
+    <script src="js/Chart.min.js"></script>
+    <script src="js/gauge.min.js"></script>
+    <script src="js/bootstrap-progressbar.min.js"></script>
+    <script src="js/icheck.min.js"></script>
+    <script src="js/skycons.js"></script>
+    <script src="js/jquery.flot.js"></script>
+    <script src="js/jquery.flot.pie.js"></script>
+    <script src="js/jquery.flot.time.js"></script>
+    <script src="js/jquery.flot.stack.js"></script>
+    <script src="js/jquery.flot.resize.js"></script>
+    <script src="js/jquery.flot.orderBars.js"></script>
+    <script src="js/jquery.flot.spline.min.js"></script>
+    <script src="js/curvedLines.js"></script>
+    <script src="js/date.js"></script>
+    <script src="js/jquery.vmap.js"></script>
+    <script src="js/jquery.vmap.world.js"></script>
+    <script src="js/jquery.vmap.sampledata.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/daterangepicker.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/jquery.zclip.min.js" type="text/javascript"></script>
+    <script src="js/app.js" type="text/javascript"></script>
+    <script src="js/common.js"></script> 
+    <script>
+        $(function(){
+            con();
+            index();
+        })
+    </script>
+</body>
+</html> 
+ 
